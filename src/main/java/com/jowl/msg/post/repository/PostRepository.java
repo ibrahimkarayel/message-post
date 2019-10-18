@@ -9,4 +9,6 @@ public interface PostRepository extends MongoRepository<Post, String> {
 
     List<Post> findByAuthor_Email(String email);
 
+    List<Post> findAllByOrderByChangeDateDescCreationDateDesc();
+
 }

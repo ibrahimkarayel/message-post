@@ -33,7 +33,7 @@ public class PostController {
 
     @GetMapping("")
     public ResponseEntity<List<Post>> getAllPost() {
-        List<Post> posts = postService.finAll();
+        List<Post> posts = postService.finAllOrdered();
         if (posts != null) {
             return ResponseEntity.ok(posts);
         }
@@ -60,14 +60,11 @@ public class PostController {
 
     @PutMapping("/post/{id}")
     public ResponseEntity<Post> updatePost(@PathVariable("id") String id, @RequestBody Post post) {
-        if (id == null) {
-            return ResponseEntity.noContent().build();
-        }
-        Post updated = postService.save(post);
+        Post updated = postService.update(post);
         if (updated != null) {
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(updated);
         }
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/post/{id}")

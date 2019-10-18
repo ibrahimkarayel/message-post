@@ -9,6 +9,8 @@ public interface PostService {
 
     Post save(Post post);
 
+    Post update(Post post);
+
     Post addComment(String id, Comment comment);
 
     void delete(Post post);
@@ -17,6 +19,6 @@ public interface PostService {
 
     List<Post> findByAuthor(String email);
 
-    List<Post> finAll();
+    List<Post> finAllOrdered();
 
 }

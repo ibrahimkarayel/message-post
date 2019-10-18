@@ -6,6 +6,7 @@ import com.jowl.msg.post.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +24,19 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post save(Post post) {
         return postRepository.save(post);
+    }
+
+    @Override
+    public Post update(Post post) {
+        if (post.getPostId() == null) {
+            return null;
+        }
+        if (postRepository.existsById(post.getPostId())) {
+            post.setChangeDate(LocalDateTime.now());
+            return postRepository.save(post);
+        }
+        return null;
+
     }
 
     @Override
@@ -59,7 +73,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> finAll() {
-        return postRepository.findAll();
+    public List<Post> finAllOrdered() {
+        return postRepository.findAllByOrderByChangeDateDescCreationDateDesc();
     }
 }

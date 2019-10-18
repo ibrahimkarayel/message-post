@@ -30,19 +30,23 @@ base uri `http://localhost:8080/api/posts`
 
 ## Improvements
 
-##### Api calls are not secure: 
+1. Api calls are not secure: 
     can be configured with firebase token and more secured
-##### Getting all post: 
+2. Getting all post: 
     Pagination can be used and imroved 
-##### Comments:
+3. Comments:
     coments cannot be edited or deleted this fature can be added 
-##### Chart:
+3. Chart:
     a simple chart emebeded this can me modified on altas db more information can be added 
-##### UI:
+4.  UI:
    Ui also can be more user friendly 
 
 
 #### Watch Courses
-[![video](https://youtu.be/8FBsvpHUsxA)](https://youtu.be/8FBsvpHUsxA)
+[![course video](https://i9.ytimg.com/vi/8FBsvpHUsxA/mq1.jpg?sqp=CN_aqO0F&rs=AOn4CLBuLvRJL1RSrGJxz2lDQ6WESU0LKQ)](https://youtu.be/8FBsvpHUsxA)
+
+
+[ibrahim karayel](https://www.linkedin.com/in/ibrahimkarayel/)
+
 
 

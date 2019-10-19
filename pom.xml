@@ -19,6 +19,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <modelmapper-version>2.3.2</modelmapper-version>
+        <docker.registry>localhost:5000</docker.registry>
+        <dockerfile.skip>false</dockerfile.skip>
+        <spotify.docker.version>1.4.10</spotify.docker.version>
+
     </properties>
     <dependencies>
         <dependency>
@@ -46,7 +50,6 @@
             <version>${modelmapper-version}</version>
         </dependency>
     </dependencies>
-
     <build>
         <finalName>message-posts</finalName>
         <plugins>
@@ -63,6 +66,41 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>docker</id>
+            <build>
+                <finalName>message-posts</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>com.spotify</groupId>
+                        <artifactId>dockerfile-maven-plugin</artifactId>
+                        <version>${spotify.docker.version}</version>
+                        <executions>
+                            <execution>
+                                <id>default</id>
+                                <goals>
+                                    <goal>build</goal>
+                                    <goal>push</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <tag>${project.version}</tag>
+                            <buildArgs>
+                                <DOCKER_REGISTRY>${docker.registry}</DOCKER_REGISTRY>
+                                <EXECUTABLE_ARTIFACT_NAME>${project.build.finalName}</EXECUTABLE_ARTIFACT_NAME>
+                            </buildArgs>
+                            <!-- <useMavenSettingsForAuth>true</useMavenSettingsForAuth>-->
+                            <googleContainerRegistryEnabled>false</googleContainerRegistryEnabled>
+                            <skip>${dockerfile.skip}</skip>
+                            <repository>${user.name}/${project.artifactId}</repository>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 
 </project>

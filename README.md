@@ -43,7 +43,7 @@ base uri `http://localhost:8080/api/posts`
 
 
 #### Watch Courses
-[![course video](https://img.youtube.com/vi/8FBsvpHUsxA)](https://youtu.be/8FBsvpHUsxA)
+[![course video](https://img.youtube.com/vi/8FBsvpHUsxA/0.jpg)](https://youtu.be/8FBsvpHUsxA)
 
 
 [ibrahim karayel](https://www.linkedin.com/in/ibrahimkarayel/)
